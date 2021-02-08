@@ -1,15 +1,106 @@
-name: my-snap-name # you probably want to 'snapcraft register <name>'
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Single-line elevator pitch for your amazing snap # 79 char long summary
+name: gnu-poke # you probably want to 'snapcraft register <name>'
+base: core20 # the base snap is the execution environment for this snap
+version: '0.1-beta' # just for humans, typically '1.2+git' or '1.3.2'
+summary: GNU Poke Binary Editor # 79 char long summary
 description: |
-  This is my-snap's description. You have a paragraph or two to tell the
-  most important story about your snap. Keep it under 100 words though,
-  we live in tweetspace and your description wants to look good in the snap
-  store.
+  GNU poke is an interactive, extensible editor for binary data. Not limited
+  to editing basic entities such as bits and bytes, it provides a full-fledged
+  procedural, interactive programming language designed to describe data
+  structures and to operate on them.
+  http://www.jemarch.net/poke
 
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+license: GPL-3.0
+
+# icon: 
+
+layout:
+  /usr/share/poke:
+    symlink: $SNAP/usr/share/poke
+  /usr/bin/poke:
+    symlink: $SNAP/usr/bin/poke
+  /usr/bin/poke-gui:
+    symlink: $SNAP/usr/bin/poke-gui
+
+apps:
+  poke:
+    command: usr/bin/poke
+    plugs: [network, network-bind]
+  # TODO: Figure out why the gui doesn't think it can find tcl8.6/init.tcl
+  poke-gui:
+    command: usr/bin/poke-gui
+    #desktop: <tbd usr/share/applications/poke-gui.desktop>
+    plugs: [desktop, desktop-legacy, wayland, x11, network, network-bind]
+    #plugs: [cups-control, home]
+  pk-elfextractor:
+    command: usr/bin/pk-elfextractor
+    # Needs a patch
+
 
 parts:
-  my-part:
-    # See 'snapcraft plugins'
-    plugin: nil
+  poke:
+    # export SNAPCRAFT_BUILD_ENVIRONMENT_CPU=16
+    # git clone git://git.savannah.gnu.org/poke.git --recurse-submodules -j8
+    # git submodule update --init --recursive
+    source: poke/
+    #source: git://git.savannah.gnu.org/poke.git
+    #  git submodule update --init --recursive
+    plugin: autotools
+    build-packages:
+      - automake
+      - autoconf
+      - gettext
+      - help2man
+      - flex
+      - libreadline-dev
+      - libgc-dev
+      - libjson-c-dev
+      - tk-dev
+      - libnbd-dev
+      - texinfo
+      - git
+      - gawk
+    stage-packages:
+      - libgc1c2
+      - tk
+      - libnbd0
+      - libtcl8.6
+    after: [gettext, bison]
+    # sure would be nice if the poke project bootstrap.conf respected
+    # non-default paths. Also, snapcraft only recently got ./bootstrap support,
+    # but it doesn't support passing flags to bootstrap yet.
+    # One is an upstream bug, another is a downstream feture request.
+    # TODO: figure out why snapcraftctl doesn't do anything here.
+    override-build: |
+      echo "Setting version to '${SNAPCRAFT_PROJECT_VERSION}-$(git log -n1 --format=%cs_%h)'"
+      snapcraftctl set-version "${SNAPCRAFT_PROJECT_VERSION}-$(git log -n1 --format=%cs_%h)"
+      ./bootstrap --gnulib-srcdir=gnulib --jitter-srcdir=jitter --no-git --skip-po
+      ./configure --prefix=/usr
+      make -j"${SNAPCRAFT_PARALLEL_BUILD_COUNT}"
+      make install DESTDIR="${SNAPCRAFT_PART_INSTALL}"
+#      sudo ldconfig
+
+  bison:
+    #source: http://ftp.gnu.org/gnu/bison/bison-3.7.5.tar.xz
+    source: bison-3.7.5.tar.xz
+    plugin: autotools
+    autotools-configure-parameters:
+      # move from /usr/local to /usr so the later build steps find the tool
+      - --prefix=/usr
+      # so the binary can run from ${SNAPCRAFT_STAGE}/usr rather than /usr
+      - --enable-relocatable
+    prime:
+      # put none of these files into the final snap.
+      - -*
+  gettext:
+    #source: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
+    source: gettext-0.21.tar.gz
+    plugin: autotools
+    autotools-configure-parameters:
+      # move from /usr/local to /usr so the later build steps find the tool
+      - --prefix=/usr
+    prime:
+      # put none of these files into the final snap except the lib I think we
+      # need.
+      - usr/lib/libtextstyle*
