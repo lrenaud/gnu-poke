@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="[Project]">
+  <img src="https://avatars1.githubusercontent.com/u/29598503?v=3&s=256" alt="GNU Poke">
   <br />
-  [Project]
+  GNU Poke
 </h1>
 
 <p align="center"><b>This is the snap for GNU Poke</b>, <i>The extensible editor for structured binary data</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
@@ -82,4 +82,6 @@ If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft
 | [![Poke](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](http://www.jemarch.net/poke |
 | :---: |
 | [Poke](http://www.jemarch.net/poke) |
+
+https://git.savannah.gnu.org/cgit/poke.git/tree/AUTHORS
 -->
