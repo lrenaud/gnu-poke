@@ -116,8 +116,8 @@ parts:
     # TODO: figure out why snapcraftctl doesn't do anything here.
     override-build: |
       ./bootstrap --gnulib-srcdir=gnulib --jitter-srcdir=jitter --no-git
-      ./configure --prefix=/usr --enable-gui --enable-mi
       export MAKEINFOFLAGS="--css-ref=http://www.jemarch.net/homepage.css"
+      ./configure --prefix=/usr --enable-gui --enable-mi
       make -j"${SNAPCRAFT_PARALLEL_BUILD_COUNT}"
       make install DESTDIR="${SNAPCRAFT_PART_INSTALL}"
       make install-html DESTDIR="${SNAPCRAFT_PART_INSTALL}" || true
