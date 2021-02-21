@@ -42,13 +42,13 @@ upstream so [Project] can authoritatively publish future releases.
   - [x] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
   - [x] Update the description of the repository
   - [x] Update logos and references to `[Project]` and `[my-snap-name]`
-  - [ ] Create a snap that runs in `devmode`
-  - [ ] Register the snap in the store, **using the preferred upstream name**
+  - [x] Create a snap that runs in `devmode`
+  - [x] Register the snap in the store, **using the preferred upstream name**
   - [ ] Add a screenshot to this `README.md`
-  - [ ] Publish the `devmode` snap in the Snap store edge channel
+  - [x] Publish the `devmode` snap in the Snap store edge channel
   - [ ] Add install instructions to this `README.md`
   - [ ] Update snap store metadata, icons and screenshots
-  - [ ] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
+  - [x] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
   - [ ] Publish the confined snap in the Snap store beta channel
   - [ ] Update the install instructions in this `README.md`
   - [ ] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
