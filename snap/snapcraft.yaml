@@ -34,7 +34,7 @@ plugs:
 apps:
   poke:
     command: usr/bin/poke
-    command-chain: symlink-configs.sh
+    command-chain: [bin/symlink-configs.sh, usr/bin/poke]
     plugs: 
       - dot-files
       - home
@@ -42,8 +42,8 @@ apps:
       - network-bind
 
   poke-gui:
-    command-chain: symlink-configs.sh
     command: usr/bin/poke-gui
+    command-chain: [bin/symlink-configs.sh, usr/bin/poke-gui]
     # TODO: Write a .desktop file.
     #desktop: <tbd usr/share/applications/poke-gui.desktop>
     plugs:
@@ -61,6 +61,12 @@ apps:
 
 # export SNAPCRAFT_BUILD_ENVIRONMENT_CPU=16
 parts:
+  home-linkage:
+    source: sh/
+    plugin: dump
+    organize:
+      symlink-configs.sh: bin/
+
   gnu-poke:
     # git clone git://git.savannah.gnu.org/poke.git --recurse-submodules -j8
     # git submodule update --init --recursive
