@@ -18,12 +18,12 @@ license: GPL-3.0
 #adopt-info: gnu-poke
 
 # Limit the build impact. I want this thing on my Pi's and my Desktops
-# TODO: why doesn't i386 work?
+# TODO: why doesn't i386 or 32-bit arm work?
 architectures:
   - build-on: arm64
   - build-on: armhf
   - build-on: amd64
-  - build-on: i386
+#  - build-on: i386
 
 # icon:
 
