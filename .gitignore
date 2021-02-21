@@ -8,5 +8,7 @@
 .snapcraft
 __pycache__
 *.pyc
-*_source.tar.bz2
+*_source.tar.*
 snap/.snapcraft
+
+poke_source

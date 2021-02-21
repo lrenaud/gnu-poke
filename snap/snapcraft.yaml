@@ -9,33 +9,38 @@ description: |
   structures and to operate on them.
   http://www.jemarch.net/poke
 
+assumes:
+- command-chain
+
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 license: GPL-3.0
 adopt-info: gnu-poke
 
-# icon: 
+
+# icon:
 
 layout:
   /usr/share/poke:
     symlink: $SNAP/usr/share/poke
   /usr/share/tcltk:
     symlink: $SNAP/usr/share/tcltk
-  
+
 
 plugs:
   dot-files:
     interface: personal-files
     write:
-      - $HOME/.config/poke
       - $HOME/.pokerc
       - $HOME/.poke_history
+      - $HOME/.config/poke
+      - $HOME/.poke.d
 
 apps:
   poke:
     command: usr/bin/poke
-    command-chain: [bin/symlink-configs.sh, usr/bin/poke]
-    plugs: 
+    command-chain: [bin/symlink-configs.sh]
+    plugs:
       - dot-files
       - home
       - network
@@ -43,7 +48,7 @@ apps:
 
   poke-gui:
     command: usr/bin/poke-gui
-    command-chain: [bin/symlink-configs.sh, usr/bin/poke-gui]
+    command-chain: [bin/symlink-configs.sh]
     # TODO: Write a .desktop file.
     #desktop: <tbd usr/share/applications/poke-gui.desktop>
     plugs:
@@ -62,15 +67,15 @@ apps:
 # export SNAPCRAFT_BUILD_ENVIRONMENT_CPU=16
 parts:
   home-linkage:
-    source: sh/
+    source: snap/local/sh
     plugin: dump
     organize:
-      symlink-configs.sh: bin/
+      '*': bin/
 
   gnu-poke:
     # git clone git://git.savannah.gnu.org/poke.git --recurse-submodules -j8
     # git submodule update --init --recursive
-    source: poke/
+    source: poke_source/
     #source: git://git.savannah.gnu.org/poke.git
     #  git submodule update --init --recursive
     plugin: autotools
@@ -116,7 +121,7 @@ parts:
 
   bison:
     #source: http://ftp.gnu.org/gnu/bison/bison-3.7.5.tar.xz
-    source: bison-3.7.5.tar.xz
+    source: bison-3.7.5_source.tar.xz
     plugin: autotools
     autotools-configure-parameters:
       # move from /usr/local to /usr so the later build steps find the tool
@@ -128,7 +133,7 @@ parts:
       - -*
   gettext:
     #source: https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
-    source: gettext-0.21.tar.gz
+    source: gettext-0.21_source.tar.gz
     plugin: autotools
     autotools-configure-parameters:
       # move from /usr/local to /usr so the later build steps find the tool
