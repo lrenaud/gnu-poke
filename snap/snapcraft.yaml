@@ -23,7 +23,7 @@ architectures:
   - build-on: arm64
   - build-on: armhf
   - build-on: amd64
-  - build-on: i386
+#  - build-on: i386
 
 # icon:
 
@@ -34,14 +34,14 @@ layout:
     symlink: $SNAP/usr/share/tcltk
 
 
-plugs:
-  dot-files:
-    interface: personal-files
-    write:
-      - $HOME/.pokerc
-      - $HOME/.poke_history
-      - $HOME/.config/poke
-      - $HOME/.poke.d
+#plugs:
+#  dot-files:
+#    interface: personal-files
+#    write:
+#      - $HOME/.pokerc
+#      - $HOME/.poke_history
+#      - $HOME/.config/poke
+#      - $HOME/.poke.d
 
 apps:
   poke:
@@ -73,11 +73,11 @@ apps:
 
 # export SNAPCRAFT_BUILD_ENVIRONMENT_CPU=16
 parts:
-  home-linkage:
-    source: snap/local/sh
-    plugin: dump
-    organize:
-      '*': bin/
+#  home-linkage:
+#    source: snap/local/sh
+#    plugin: dump
+#    organize:
+#      '*': bin/
 
   gnu-poke:
     # git clone git://git.savannah.gnu.org/poke.git --recurse-submodules -j8
