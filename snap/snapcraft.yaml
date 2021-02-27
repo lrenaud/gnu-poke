@@ -21,8 +21,8 @@ license: GPL-3.0
 # TODO: why doesn't i386 or 32-bit arm work?
 architectures:
   - build-on: arm64
-  - build-on: armhf
   - build-on: amd64
+#  - build-on: armhf
 #  - build-on: i386
 
 # icon:

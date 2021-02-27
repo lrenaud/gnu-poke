@@ -8,13 +8,11 @@
 
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
-<a href="https://build.snapcraft.io/user/snapcrafters/fork-and-rename-me"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>
+<a href="https://build.snapcraft.io/user/snapcrafters/gnu-poke"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>
 </p>
 -->
 
-<!-- Uncomment and modify this when you have a screenshot
-![gnu-poke](screenshot.png?raw=true "gnu-poke")
--->
+![gnu-poke](screenshot-1.0.png?raw=true "gnu-poke")
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
@@ -22,16 +20,11 @@
 
     sudo snap install gnu-poke
 
-<!-- Uncomment and modify this when your snap is available on the store
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/gnu-poke)
--->
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/poke)
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
 ## Remaining tasks
-<!-- Uncomment and modify this when you have a screenshot
-![gnu-poke](screenshot.png?raw=true "gnu-poke")
--->
 
 Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) 
 are working to land snap install documentation and
@@ -46,11 +39,11 @@ upstream so [Project] can authoritatively publish future releases.
   - [x] Register the snap in the store, **using the preferred upstream name**
   - [ ] Add a screenshot to this `README.md`
   - [x] Publish the `devmode` snap in the Snap store edge channel
-  - [ ] Add install instructions to this `README.md`
-  - [ ] Update snap store metadata, icons and screenshots
+  - [x] Add install instructions to this `README.md`
+  - [x] Update snap store metadata, icons and screenshots
   - [x] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
   - [ ] Publish the confined snap in the Snap store beta channel
-  - [ ] Update the install instructions in this `README.md`
+  - [x] Update the install instructions in this `README.md`
   - [ ] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
   - [ ] Make a post in the [Snapcraft Forum](https://forum.snapcraft.io) asking for a transfer of the snap name from you to snapcrafters - [link]()
   - [ ] Ask a [Snapcrafters admin](https://github.com/orgs/snapcrafters/people?query=%20role%3Aowner) to fork your repo into github.com/snapcrafters, and configure the repo for automatic publishing into edge on commit
@@ -68,20 +61,16 @@ upstream so [Project] can authoritatively publish future releases.
 
 If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft.io).
 
-<!--
-## The Snapcrafters
-
-| [![Luke](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/lrenaud/) |
-| :---: |
-| [Luke](https://github.com/lrenaud/) |
---> 
-
-<!-- Uncomment and modify this when you have upstream contacts
 ## Upstream
 
-| [![Poke](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](http://www.jemarch.net/poke |
-| :---: |
-| [Poke](http://www.jemarch.net/poke) |
+| [![GNU poke](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431?s=128)](http://www.jemarch.net/poke) | [![Jose E. Marchesi](http://www.jemarch.net/jemarch-t.png)](http://www.jemarch.net/cv.html) |
+| :---: | :---: |
+| [GNU poke](http://www.jemarch.net/poke) ([AUTHORS](https://git.savannah.gnu.org/cgit/poke.git/tree/AUTHORS)) | [Jose E. Marchesi](http://www.jemarch.net/cv.html) |
 
 https://git.savannah.gnu.org/cgit/poke.git/tree/AUTHORS
--->
+
+## The Snapcrafters
+
+| [![Luke](https://avatars.githubusercontent.com/u/836281?s=128&u=bcfdfa1256483cef169eaf1dab8ca00d0e4124a9&v=4)](https://github.com/lrenaud/) |
+| :---: |
+| [Luke](https://github.com/lrenaud/) |
