@@ -116,16 +116,14 @@ parts:
     # but it doesn't support passing flags to bootstrap yet.
     # One is an upstream bug, another is a downstream feture request.
     # TODO: figure out why snapcraftctl doesn't do anything here.
+#      ./bootstrap --gnulib-srcdir=gnulib --jitter-srcdir=jitter --no-git
     override-build: |
-      ./bootstrap --gnulib-srcdir=gnulib --jitter-srcdir=jitter --no-git
       export MAKEINFOFLAGS="--css-ref=http://www.jemarch.net/homepage.css"
       ./configure --prefix=/usr --enable-gui --enable-mi
       make -j"${SNAPCRAFT_PARALLEL_BUILD_COUNT}"
       make install DESTDIR="${SNAPCRAFT_PART_INSTALL}"
       make install-html DESTDIR="${SNAPCRAFT_PART_INSTALL}" || true
       make install-pdf DESTDIR="${SNAPCRAFT_PART_INSTALL}" || true
-    #  echo "Setting version to '0.1-beta+git-$(git log -n1 --format=%cs-%h)'"
-    #  snapcraftctl set-version "0.1-beta+git-$(git log -n1 --format=%cs-%h)"
     # as of 2020-02-14 the /po sub-child of install-pdf is expected to fail,
     # so I trap the failure and say screw it.
 
