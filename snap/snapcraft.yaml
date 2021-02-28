@@ -9,13 +9,15 @@ description: |
   structures and to operate on them.
   http://www.jemarch.net/poke
 
+# improved startup time, particularly on the arm targets.
+compression: lzo
 assumes:
 - command-chain
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+#grade: stable
+grade: devel
 confinement: strict # use 'strict' once you have the right plugs and slots
 license: GPL-3.0
-#adopt-info: gnu-poke
 
 # Limit the build impact. I want this thing on my Pi's and my Desktops
 # TODO: why doesn't i386 or 32-bit arm work?
@@ -70,7 +72,6 @@ apps:
     command: usr/bin/pk-elfextractor
     # Needs a patch
 
-
 # export SNAPCRAFT_BUILD_ENVIRONMENT_CPU=16
 parts:
 #  home-linkage:
@@ -82,9 +83,10 @@ parts:
   gnu-poke:
     # git clone git://git.savannah.gnu.org/poke.git --recurse-submodules -j8
     # git submodule update --init --recursive
+    source: https://ftp.gnu.org/gnu/poke/poke-1.0.tar.gz
     #source: poke_source/
-    source: git://git.savannah.gnu.org/poke.git
-    source-tag: releases/poke-1.0
+    #source: git://git.savannah.gnu.org/poke.git
+    #source-tag: releases/poke-1.0
     #  git submodule update --init --recursive
     plugin: autotools
     build-packages:
