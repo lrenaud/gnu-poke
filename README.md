@@ -12,7 +12,7 @@
 </p>
 -->
 
-![gnu-poke](screenshot-1.0.png?raw=true "gnu-poke")
+![gnu-poke](screenshot-1.0.png?master/screenshot_1.0.png "gnu-poke")
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
