@@ -1,6 +1,6 @@
 name: poke # you probably want to 'snapcraft register <name>'
 base: core20 # the base snap is the execution environment for this snap
-version: '1.2-testing' # just for humans, typically '1.2+git' or '1.3.2'
+version: '1.2-testing' # just for humans, typically '1.2+git' or '1.3.2' 
 summary: GNU Poke Binary Editor # 79 char long summary
 description: |
   GNU poke is an interactive, extensible editor for binary data. Not limited
