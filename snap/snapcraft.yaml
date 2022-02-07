@@ -14,8 +14,8 @@ compression: lzo
 assumes:
 - command-chain
 
-#grade: stable
-grade: devel
+grade: stable
+#grade: devel
 confinement: strict # use 'strict' once you have the right plugs and slots
 license: GPL-3.0
 
